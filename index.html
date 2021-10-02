@@ -1,0 +1,358 @@
+
+<html>
+  <head>
+    <title>Jason Li</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+
+    <!-- Header -->
+    <section id="header">
+      <header>
+<!--	<span class="image avatar"><img src="images/me_cropped.jpg" alt="" /></span> -->
+	<h1 id="logo"><a href="#">Jason Li</a></h1>
+      </header>
+      <div>
+              I am a final-year PhD student (Fall 2016 – present) in the School of Computer Science at Carnegie Mellon University and part of the <a href="http://aco.math.cmu.edu/">Algorithms and Combinatorial Optimization (ACO) group</a>. I am fortunate to be co-advised by Prof. <a href="http://www.cs.cmu.edu/~anupamg">Anupam Gupta</a> and Prof. <a href="http://www.cs.cmu.edu/~haeupler">Bernhard Haeupler</a>. I also obtained my bachelor's degree in computer science at CMU, with a double major in math.</p>
+	  </div>
+    </section>
+
+	<h3><a href='http://www.cs.cmu.edu/~jmli/papers/thesis.pdf'>Thesis: Preconditioning and Locality in Algorithm Design</a> <br> <a href="https://www.cs.cmu.edu/~jmli/papers/thesis-slides.pdf">(slides)</a> </h3>
+
+      <!-- Main -->
+      <div id="main">
+
+            <h3>Research Interests</h3>
+I am broadly interested in the power of <b>parameterization</b> in the context of <b>algorithm design</b>. In particular, I like understanding the mathematical structure of parameterized input instances, and how they can be exploited in the search for faster algorithms. Examples include, but are not limited to:
+
+<ul>
+	<li> <b>Spectral graph theory</b>: fast algorithms on graphs with nice spectral properties, such as graphs with large expansion. Together with the expander decomposition technique, many of these algorithms can even be generalized to work on all graphs.
+<li> <b>Parameterized algorithms</b>: fast, polynomial-time algorithms for difficult problems under the promise that a certain parameter in the input instance is small. This includes fixed-parameter tractable (FPT) algorithms and approximation algorithms under a parameterized setting.
+<li> <b>Algorithmic graph theory</b>: graph algorithms on parameterized graph families, e.g., planar, bounded treewidth, or excluded minor graphs.
+<!-- <li> <b>Distributed algorithms</b>: fast distributed algorithms that depend on extra parameters of the network graph, such as the diameter or the maximum degree. -->
+</ul>
+
+On the mathematics side, my main interests are probabilistic and extremal combinatorics, and structural graph theory.
+<!--            <p>I work on the algorithmic side of theoretical computer science, specifically in the fields of approximation algorithms, graph algorithms, parameterized algorithms, and distributed computing. On the mathematics side, my main interests are probabilistic and extremal combinatorics, and structural graph theory. -->
+              
+
+	<!-- Two -->
+	<section id="publications">
+	    <h3>Publications</h3>
+		<!--	<b>*</b> indicates that I gave the talk at the corresponding conference, and in most cases, my slides are attached. -->
+
+	    <ol reversed class="feature-icons" id='papers'> </ol>
+	    <h3>Older Publications</h3>
+	    <ul class="feature-icons" id='old-papers'> </ul>
+	</section>
+
+	<section id="contact">
+	  <div class="container">
+	    <h3>Contact</h3>
+            <div class="contactline">
+              <strong>Office:</strong> 5109 Gates Hillman Center, School of Computer Science, CMU </br>
+            </div>
+            <div class="contactline">
+              <strong>Email:</strong> jm[my last name]@cs.cmu.edu </br>
+            </div>
+	  </div>
+	</section>
+  </body>
+</html>
+
+<script>
+papers_list = [
+  	{
+  		authors : 'Jason Li, Thatchaphol Saranurak' ,
+  		title : 'Deterministic Weighted Expander Decomposition in Almost-linear Time' ,
+  		arxiv : '2106.01567' ,
+  	} ,
+  	{
+  		authors : 'Jason Li, Debmalya Panigrahi' ,
+  		title : 'Approximate Gomory-Hu Tree Is Faster than n-1 Maxflows' ,
+  		conf : 'STOC 2021' ,
+  		//arxiv : '1911.01626' ,
+		links : {'slides@STOC':'http://www.cs.cmu.edu/~jmli/slides/approximate-gomory-hu-tree-is-faster-than.pdf'} ,
+  	} ,
+  	{
+  		authors : 'Jason Li' ,
+  		title : 'Deterministic Mincut in Almost-Linear Time' ,
+  		conf : 'STOC 2021' ,
+  		arxiv : '2106.05513' ,
+		links : {'slides':'./deterministic-mincut-in-almost-linear.pdf'} ,
+  	} ,
+  	{
+  		authors : 'Jason Li, Danupon Nanongkai, Debmalya Panigrahi, Thatchaphol Saranurak, Sorrachai Yingchareonthawornchai' ,
+  		title : 'Vertex Connectivity in Poly-logarithmic Max-flows' ,
+  		conf : 'STOC 2021' ,
+  		arxiv : '2104.00104' ,
+		//links : {'slides@SODA':'./the-connectivity-threshold.pdf'} ,
+  	} ,
+  	{
+  		authors : 'Vincent Cohen-Addad, Anupam Gupta, Philip N Klein, Jason Li' ,
+  		title : 'A Quasipolynomial (2 + e)-Approximation for Planar Sparsest Cut' ,
+  		conf : 'STOC 2021' ,
+  		arxiv : '2105.15187' ,
+		//links : {'slides@SODA':'./the-connectivity-threshold.pdf'} ,
+  	} ,
+	{
+  		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li' ,
+  		title : 'The Connectivity Threshold for Dense Graphs' ,
+  		conf : 'SODA 2021' ,
+  		//arxiv : '1911.01626' ,
+		links : {'slides@SODA':'./the-connectivity-threshold.pdf'} ,
+  	} ,
+	{
+  		authors : 'Jason Li, Debmalya Panigrahi' ,
+  		title : 'Deterministic Min-cut in Poly-logarithmic Max-flows' ,
+  		conf : 'FOCS 2020' ,
+  		//arxiv : '1910.08025' ,
+		links : {'conf-version':'http://cs.cmu.edu/~jmli/papers/deterministic-mincut-in-polylogarithmic-conf.pdf', 'slides@CMU(1h)':'./deterministic-mincut-in-polylogarithmic.pdf'} ,
+  	} ,
+	{
+  		authors : 'Julia Chuzhoy, Yu Gao, Jason Li, Danupon Nanongkai, Richard Peng, Thatchaphol Saranurak' ,
+  		title : 'A Deterministic Algorithm for Balanced Cut with Applications to Dynamic Connectivity, Flows, and Beyond' ,
+  		conf : 'FOCS 2020' ,
+  		arxiv : '1910.08025' ,
+  	} ,
+  	{
+  		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li' ,
+  		title : 'The Karger-Stein Algorithm is Optimal for k-cut' ,
+  		conf : 'STOC 2020' ,
+		mytalk : true,
+  		arxiv : '1911.09165' ,
+		links : {'final-version':'https://arxiv.org/abs/2005.08301', 'slides1@STOC':'./the-karger-stein-algorithm-1.pptx', 'slides2@STOC':'./the-karger-stein-algorithm-2.pdf'} ,
+  	} ,
+  	{
+  		authors : 'Jason Li' ,
+  		title : 'Faster Parallel Algorithm for Approximate Shortest Path' ,
+  		conf : 'STOC 2020' ,
+		mytalk : true,
+  		arxiv : '1911.01626' ,
+		links : {'slides@STOC':'./faster-parallel-algorithm.pdf'} ,
+  	} ,
+	{
+  		authors : 'Jason Li, Jesper Nederlof' ,
+  		title : 'Detecting Feedback Vertex Sets of Size k in O*(2.7^k) Time' ,
+  		conf : 'SODA 2020' ,
+		mytalk : true,
+  		arxiv : '1906.12298' ,
+		links : {'slides@SODA':'./detecting-feedback-vertex-sets.pdf', 'slides(1h)':'./detecting-feedback-vertex-sets-5-7.pdf'} ,
+  	} ,
+//	{
+//		authors : 'Jason Li' ,
+//		title : 'Distributed Treewidth Computation' ,
+//		conf : 'Submitted' ,
+//		arxiv : '1805.10708' ,
+//	} ,
+	{
+	authors : 'Jason Li' ,
+		title : 'Faster Minimum k-cut of a Simple Graph' ,
+		conf : 'FOCS 2019' ,
+		mytalk : true,
+		arxiv : '1910.02665' ,
+		other: '<font color="forestgreen"><b>Machtey Best Student Paper (co-winner)</b></font>',
+		links : {'slides@FOCS':'./faster-minimum-k-cut-simple.pdf'} ,
+	} ,
+	{
+		authors : 'Vincent Cohen-Addad, Jason Li' ,
+		title : 'On the Fixed-Parameter Tractability of Capacitated Clustering' ,
+		conf : 'ICALP 2019' ,
+		mytalk : true,
+		arxiv : '' ,
+		links : {'slides@ICALP':'./on-the-fixed-parameter-capacitated.pdf'} ,
+	} ,
+	{
+		authors : 'Vincent Cohen-Addad, Anupam Gupta, Amit Kumar, Euiwoong Lee, Jason Li' ,
+		title : 'Tight FPT Approximations for k-Median and k-Means' ,
+		conf : 'ICALP 2019' ,
+		mytalk : true,
+		arxiv : '1904.12334' ,
+		links : {'slides@ICALP':'./tight-fpt-approximations-kmedian.pdf'} ,
+	} ,
+	{
+		authors : 'John Augustine, Mohsen Ghaffari, Robert Gmyr, Kristian Hinnenthal, Fabian Kuhn, Jason Li, Christian Scheideler' ,
+		title : 'Distributed Computation in the Node-Congested Clique' ,
+		conf : 'SPAA 2019' ,
+		arxiv : '1805.07294' ,
+	} ,
+	{
+		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li' ,
+		title : 'The Number of Minimum k-Cuts: Improving the Karger-Stein Bound' ,
+		conf : 'STOC 2019' ,
+		mytalk : true,
+		arxiv : '1906.00417' ,
+		links : {'slides@STOC':'./the-number-of-minimum-k-cuts-stoc19.pdf' , 'slides@CMU(1h)':'the-number-of-minimum-k-cuts-cmu19.pdf' , 'talk@CMU(1h)':'https://www.youtube.com/watch?v=ug_dtKCjLL4'} ,
+	} ,
+	{
+		authors : 'Jason Li, Merav Parter' ,
+		title : 'Planar Diameter via Metric Compression' ,
+		conf : 'STOC 2019' ,
+		mytalk : true,
+		arxiv : '1912.11491' ,
+		links : {'slides@STOC':'./planar-diameter-stoc19.pdf' , 'slides@ICERM:(45min)':'planar-diameter-icerm19.pdf' , 'talk@ICERM(45min)':'https://icerm.brown.edu/video_archive/?play=1912'} ,
+	} ,
+	{
+		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li, Pasin Manurangsi, Michal Wlodarczyk' ,
+		title : 'Losing Treewidth by Separating Subsets' ,
+		conf : 'SODA 2019' ,
+		arxiv : '1804.01366' ,
+	} ,
+	{
+		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li' ,
+		title : 'Faster Exact and Approximate Algorithms for k-Cut' ,
+		conf : 'FOCS 2018' ,
+		mytalk : true,
+		arxiv : '1807.08144' ,
+		links : {'slides@FOCS':'./faster-exact-and-approximate-focs18.pdf'} ,
+	} ,
+	{
+		authors : 'Mohsen Ghaffari, Jason Li' ,
+		title : 'New Distributed Algorithms in Almost Mixing Time via Transformations from Parallel Algorithms' ,
+		conf : 'DISC 2018' ,
+		mytalk : true,
+		arxiv : '1805.04764' ,
+		links : {'slides@DISC':'./new-distributed-algorithms-disc18.zip'} ,
+	} ,
+	{
+		authors : 'Bernhard Haeupler, Jason Li' ,
+		title : 'Faster Distributed Shortest Path Approximations via Shortcuts' ,
+		conf : 'DISC 2018' ,
+		mytalk : true,
+		arxiv : '1802.03671' ,
+		links : {'slides@DISC':'./faster-distributed-shortest-disc18.zip'} ,
+	} ,
+	{
+		authors : 'Bernhard Haeupler, Jason Li, Goran Zuzic' ,
+		title : 'Minor Excluded Network Families Admit Fast Distributed Algorithms' ,
+		conf : 'PODC 2018' ,
+		arxiv : '1801.06237' ,
+	} ,
+	{
+		authors : 'Anupam Gupta, Amit Kumar, Jason Li' ,
+		title : 'Non-Preemptive Flow-Time Minimization via Rejections' ,
+		conf : 'ICALP 2018' ,
+		arxiv : '1805.09602' ,
+		//links : {'raw-slides@ICALP':'./non-preemptive-flow-icalp18.pdf'} ,
+	} ,
+	{
+		authors : 'Mohsen Ghaffari, Jason Li' ,
+		title : 'Improved Distributed Algorithms for Exact Shortest Paths' ,
+		conf : 'STOC 2018' ,
+		mytalk : true,
+		arxiv : '1712.09121' ,
+		links : {'slides@STOC':'./improved-distributed-stoc18.pdf'} ,
+	} ,
+	{
+		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li' ,
+		title : 'An FPT Algorithm Beating 2-Approximation for k-Cut' ,
+		conf : 'SODA 2018' ,
+		mytalk : true,
+		arxiv : '1710.08488' ,
+		links : {'slides@SODA':'./an-fpt-algorithm-soda18.pdf'} ,
+	} ,
+]
+
+old_papers_list = [
+	{
+		authors : 'Jason Li, Ryan O\'Donnell' ,
+		title : 'Bounding laconic proof systems by solving CSPs in parallel' ,
+		conf : 'SPAA 2017' ,
+		mytalk : true,
+		arxiv : '' ,
+	} ,
+	{
+		authors : 'S Bhupatiraju, P Etingof, D Jordan, W Kuszmaul, J Li' ,
+		title : 'Lower central series of a free associative algebra over the integers and finite fields' ,
+		conf : 'Journal of Algebra (2012)' ,
+		arxiv : '1203.1893' ,
+	} ,
+]
+
+function convertAuthorsToWith(authorsString) {
+	var authors = authorsString.split(',')
+	var withAuthors = []
+	for (var i = 0; i < authors.length; i++) {
+		author = authors[i].trim()
+		//console.log(author)
+		if (author != 'Jason Li') {
+			withAuthors.push(author)
+		}
+	}
+	if (withAuthors.length > 0) {
+		return 'with ' + withAuthors.join(', ') + '. '
+	}
+	return ''
+}
+
+function toLink(link) {
+	if (link[0] == '.') {
+		return 'https://cs.cmu.edu/~jmli/slides' + link.substring(1)
+	}
+	return link
+}
+
+function paperToDiv(paper) {
+	var authorsDiv = document.createElement('div')
+	authorsDiv.innerText = paper['authors'] + '. ' // convertAuthorsToWith(paper['authors'])
+	var titleDiv = document.createElement('div')
+	titleDiv.innerText = paper['title'] + '. '
+//	if ('mytalk' in paper) {
+//		titleDiv.innerText += '*'
+//	}
+	var confDiv = document.createElement('span')
+	if (paper['conf']) {
+		confDiv.innerText = paper['conf'] + '. '
+	}
+	var arxivDiv = document.createElement('span')
+	if (paper['arxiv']) {
+		arxivDiv.innerHTML = '<a href="https://arxiv.org/abs/' + paper['arxiv'] + '">(arXiv)</a> '
+	//} else {
+	//	arxivDiv.innerText = '(arXiv) '
+	//	arxivDiv.style.visibility = 'hidden'
+	}
+	var linksDiv = document.createElement('div')
+	if ('links' in paper) {
+		var links = paper['links']
+
+		for (var i = 0; i < Object.keys(links).length; i++) {
+			var key = Object.keys(links)[i]
+			linksDiv.innerHTML += '<a href="' + toLink(links[key]) + '">[' + key + ']</a> '
+		}
+	}
+	var otherDiv = document.createElement('div')
+	if ('other' in paper) {
+		otherDiv.innerHTML = paper['other']
+	}
+
+	// Customization
+	titleDiv.style.color = 'purple'
+	titleDiv.style.fontWeight = 'bold'
+	confDiv.style.color = 'darkblue'
+	confDiv.style.fontWeight = 'bold'
+	confDiv.style.fontStyle = 'italic'
+
+	// arxiv
+
+	var paperDiv = document.createElement('li')
+	// Ordering
+	paperDiv.appendChild(titleDiv)
+	paperDiv.appendChild(authorsDiv)
+	paperDiv.appendChild(confDiv)
+	paperDiv.appendChild(arxivDiv)
+	paperDiv.appendChild(linksDiv)
+	paperDiv.appendChild(otherDiv)
+
+	return paperDiv
+}
+function addPapersToDiv(papersDiv, papers) {
+	for (var i = 0; i < papers.length; i++) {
+		//console.log(papers[i])
+		papersDiv.appendChild(paperToDiv(papers[i]))
+	}
+}
+
+addPapersToDiv(document.getElementById('papers'), papers_list)
+addPapersToDiv(document.getElementById('old-papers'), old_papers_list)
+</script>
