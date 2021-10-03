@@ -24,7 +24,7 @@
 
             <h3>Research Interests</h3>
 			I am broadly interested in the power of <b>preconditioning</b> and <b>locality</b> in the context of <b>algorithm design</b>. Loosely speaking, I see preconditioning and locality as reductions from <b>worst-case</b> instances to <b>well-behaved</b> and <b>local instances</b>, respectively. See my thesis below for more details.
-			<h3><a href='http://www.cs.cmu.edu/~jmli/papers/thesis.pdf'>Thesis: Preconditioning and Locality in Algorithm Design</a> <br> <a href="https://www.cs.cmu.edu/~jmli/papers/thesis-slides.pdf">(slides)</a> </h3>
+			<h3><a href='https://q3r.github.io/papers/thesis.pdf'>Thesis: Preconditioning and Locality in Algorithm Design</a> <br> <a href="https://q3r.github.io/papers/thesis-slides.pdf">(slides)</a> </h3>
 
 
 	<!-- Two -->
@@ -92,7 +92,7 @@ papers_list = [
   		title : 'Approximate Gomory-Hu Tree Is Faster than n-1 Maxflows' ,
   		conf : 'STOC 2021' ,
   		//arxiv : '1911.01626' ,
-		links : {'slides@STOC':'http://www.cs.cmu.edu/~jmli/slides/approximate-gomory-hu-tree-is-faster-than.pdf'} ,
+		links : {'slides@STOC':'./approximate-gomory-hu-tree-is-faster-than.pdf'} ,
   	} ,
   	{
   		authors : 'Jason Li' ,
@@ -125,7 +125,7 @@ papers_list = [
   		title : 'Deterministic Min-cut in Poly-logarithmic Max-flows' ,
   		conf : 'FOCS 2020' ,
   		//arxiv : '' ,
-		links : {'conf-version':'http://cs.cmu.edu/~jmli/papers/deterministic-mincut-in-polylogarithmic-conf.pdf', 'slides@CMU(1h)':'./deterministic-mincut-in-polylogarithmic.pdf'} ,
+		links : {'conf-version':'https://q3r.github.io/papers/deterministic-mincut-in-polylogarithmic-conf.pdf', 'slides@CMU(1h)':'./deterministic-mincut-in-polylogarithmic.pdf'} ,
   	} ,
 	{
   		authors : 'Julia Chuzhoy, Yu Gao, Jason Li, Danupon Nanongkai, Richard Peng, Thatchaphol Saranurak' ,
@@ -305,7 +305,7 @@ function convertAuthorsToWith(authorsString) {
 
 function toLink(link) {
 	if (link[0] == '.') {
-		return 'https://cs.cmu.edu/~jmli/slides' + link.substring(1)
+		return 'https://q3r.github.io/slides' + link.substring(1)
 	}
 	return link
 }
