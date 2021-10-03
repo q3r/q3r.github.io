@@ -14,34 +14,24 @@
 	<h1 id="logo"><a href="#">Jason Li</a></h1>
       </header>
       <div>
-              I am a final-year PhD student (Fall 2016 ñ present) in the School of Computer Science at Carnegie Mellon University and part of the <a href="http://aco.math.cmu.edu/">Algorithms and Combinatorial Optimization (ACO) group</a>. I am fortunate to be co-advised by Prof. <a href="http://www.cs.cmu.edu/~anupamg">Anupam Gupta</a> and Prof. <a href="http://www.cs.cmu.edu/~haeupler">Bernhard Haeupler</a>. I also obtained my bachelor's degree in computer science at CMU, with a double major in math.</p>
+              I am a Simons-Berkeley postdoctoral fellow at the Simons Institute, UC Berkeley. I obtained my PhD at Carnegie Mellon University's <a href="http://aco.math.cmu.edu/">Algorithms and Combinatorial Optimization (ACO) group</a> in the summer of 2021, co-advised by Prof. <a href="http://www.cs.cmu.edu/~anupamg">Anupam Gupta</a> and Prof. <a href="http://www.cs.cmu.edu/~haeupler">Bernhard Haeupler</a>. I also obtained my bachelor's degree in computer science and math at CMU.</p>
 	  </div>
     </section>
 
-	<h3><a href='http://www.cs.cmu.edu/~jmli/papers/thesis.pdf'>Thesis: Preconditioning and Locality in Algorithm Design</a> <br> <a href="https://www.cs.cmu.edu/~jmli/papers/thesis-slides.pdf">(slides)</a> </h3>
 
       <!-- Main -->
       <div id="main">
 
             <h3>Research Interests</h3>
-I am broadly interested in the power of <b>parameterization</b> in the context of <b>algorithm design</b>. In particular, I like understanding the mathematical structure of parameterized input instances, and how they can be exploited in the search for faster algorithms. Examples include, but are not limited to:
+			I am broadly interested in the power of <b>preconditioning</b> and <b>locality</b> in the context of <b>algorithm design</b>. Loosely speaking, I see preconditioning and locality as reductions from <b>worst-case</b> instances to <b>well-behaved</b> and <b>local instances</b>, respectively. See my thesis below for more details.
+			<h3><a href='http://www.cs.cmu.edu/~jmli/papers/thesis.pdf'>Thesis: Preconditioning and Locality in Algorithm Design</a> <br> <a href="https://www.cs.cmu.edu/~jmli/papers/thesis-slides.pdf">(slides)</a> </h3>
 
-<ul>
-	<li> <b>Spectral graph theory</b>: fast algorithms on graphs with nice spectral properties, such as graphs with large expansion. Together with the expander decomposition technique, many of these algorithms can even be generalized to work on all graphs.
-<li> <b>Parameterized algorithms</b>: fast, polynomial-time algorithms for difficult problems under the promise that a certain parameter in the input instance is small. This includes fixed-parameter tractable (FPT) algorithms and approximation algorithms under a parameterized setting.
-<li> <b>Algorithmic graph theory</b>: graph algorithms on parameterized graph families, e.g., planar, bounded treewidth, or excluded minor graphs.
-<!-- <li> <b>Distributed algorithms</b>: fast distributed algorithms that depend on extra parameters of the network graph, such as the diameter or the maximum degree. -->
-</ul>
-
-On the mathematics side, my main interests are probabilistic and extremal combinatorics, and structural graph theory.
-<!--            <p>I work on the algorithmic side of theoretical computer science, specifically in the fields of approximation algorithms, graph algorithms, parameterized algorithms, and distributed computing. On the mathematics side, my main interests are probabilistic and extremal combinatorics, and structural graph theory. -->
-              
 
 	<!-- Two -->
 	<section id="publications">
+	    <h3>Preprints</h3>
+	    <ol reversed class="feature-icons" id='preprints'> </ol>
 	    <h3>Publications</h3>
-		<!--	<b>*</b> indicates that I gave the talk at the corresponding conference, and in most cases, my slides are attached. -->
-
 	    <ol reversed class="feature-icons" id='papers'> </ol>
 	    <h3>Older Publications</h3>
 	    <ul class="feature-icons" id='old-papers'> </ul>
@@ -51,10 +41,10 @@ On the mathematics side, my main interests are probabilistic and extremal combin
 	  <div class="container">
 	    <h3>Contact</h3>
             <div class="contactline">
-              <strong>Office:</strong> 5109 Gates Hillman Center, School of Computer Science, CMU </br>
+				<strong>Office:</strong> Room 120, Simons Institute, UC Berkeley</br>
             </div>
             <div class="contactline">
-              <strong>Email:</strong> jm[my last name]@cs.cmu.edu </br>
+				<strong>Email:</strong> jm[my last name]@cs.cmu.edu </br>
             </div>
 	  </div>
 	</section>
@@ -68,12 +58,35 @@ papers_list = [
   		title : 'Deterministic Weighted Expander Decomposition in Almost-linear Time' ,
   		arxiv : '2106.01567' ,
   	} ,
+]
+
+papers_list = [
   	{
-  		authors : 'Jason Li, Debmalya Panigrahi' ,
-  		title : 'Approximate Gomory-Hu Tree Is Faster than n-1 Maxflows' ,
-  		conf : 'STOC 2021' ,
-  		//arxiv : '1911.01626' ,
-		links : {'slides@STOC':'http://www.cs.cmu.edu/~jmli/slides/approximate-gomory-hu-tree-is-faster-than.pdf'} ,
+  		authors : 'Ruoxu Cen, Jason Li, Debmalya Panigrahi' ,
+  		title : 'Augmenting Edge Connectivity via Isolating Cuts' ,
+  		conf : 'SODA 2022' ,
+  		//arxiv : '' ,
+  	} ,
+  	{
+  		authors : 'Zhiyang He, Jason Li, Magnus Wahlstr√∂m' ,
+  		title : 'Near-linear-time, Optimal Vertex Cut Sparsifiers in Directed Acyclic Graphs' ,
+  		conf : 'ESA 2021' ,
+		other: '<font color="forestgreen"><b>Best Paper</b></font>',
+  		arxiv : '2011.13485' ,
+  	} ,
+  	{
+  		authors : 'Ruoxu Cen, Jason Li, Danupon Nanongkai, Debmalya Panigrahi, Kent Quanrud, Thatchaphol Saranurak' ,
+  		title : 'Minimum Cuts in Directed Graphs via Partial Sparsification
+' ,
+  		conf : 'FOCS 2021' ,
+  		//arxiv : '' ,
+  	} ,
+  	{
+  		authors : 'Jason Li, Debmalya Panigrahi, Thatchaphol Saranurak' ,
+  		title : 'A Nearly Optimal All Pairs Minimum Cuts Algorithm in Simple Graphs' ,
+  		conf : 'FOCS 2021' ,
+  		//arxiv : '' ,
+		//links : {'slides@FOCS':''} ,
   	} ,
   	{
   		authors : 'Jason Li' ,
@@ -87,27 +100,25 @@ papers_list = [
   		title : 'Vertex Connectivity in Poly-logarithmic Max-flows' ,
   		conf : 'STOC 2021' ,
   		arxiv : '2104.00104' ,
-		//links : {'slides@SODA':'./the-connectivity-threshold.pdf'} ,
   	} ,
   	{
   		authors : 'Vincent Cohen-Addad, Anupam Gupta, Philip N Klein, Jason Li' ,
   		title : 'A Quasipolynomial (2 + e)-Approximation for Planar Sparsest Cut' ,
   		conf : 'STOC 2021' ,
   		arxiv : '2105.15187' ,
-		//links : {'slides@SODA':'./the-connectivity-threshold.pdf'} ,
   	} ,
 	{
   		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li' ,
   		title : 'The Connectivity Threshold for Dense Graphs' ,
   		conf : 'SODA 2021' ,
-  		//arxiv : '1911.01626' ,
+  		//arxiv : '' ,
 		links : {'slides@SODA':'./the-connectivity-threshold.pdf'} ,
   	} ,
 	{
   		authors : 'Jason Li, Debmalya Panigrahi' ,
   		title : 'Deterministic Min-cut in Poly-logarithmic Max-flows' ,
   		conf : 'FOCS 2020' ,
-  		//arxiv : '1910.08025' ,
+  		//arxiv : '' ,
 		links : {'conf-version':'http://cs.cmu.edu/~jmli/papers/deterministic-mincut-in-polylogarithmic-conf.pdf', 'slides@CMU(1h)':'./deterministic-mincut-in-polylogarithmic.pdf'} ,
   	} ,
 	{
@@ -152,7 +163,7 @@ papers_list = [
 		conf : 'FOCS 2019' ,
 		mytalk : true,
 		arxiv : '1910.02665' ,
-		other: '<font color="forestgreen"><b>Machtey Best Student Paper (co-winner)</b></font>',
+		other: '<font color="forestgreen"><b>Machtey Best Student Paper</b></font>',
 		links : {'slides@FOCS':'./faster-minimum-k-cut-simple.pdf'} ,
 	} ,
 	{
@@ -353,6 +364,7 @@ function addPapersToDiv(papersDiv, papers) {
 	}
 }
 
+addPapersToDiv(document.getElementById('preprints'), preprints_list)
 addPapersToDiv(document.getElementById('papers'), papers_list)
 addPapersToDiv(document.getElementById('old-papers'), old_papers_list)
 </script>
