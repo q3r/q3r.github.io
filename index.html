@@ -442,6 +442,7 @@ function showAll() {
 	document.getElementById('selected-papers').style.display = 'none'
 }
 
+showSelected() // Only show Selected Publications initially
 addPapersToDiv(document.getElementById('preprints'), preprints_list)
 addPapersToDiv(document.getElementById('all-papers'), papers_list)
 addPapersToDiv(document.getElementById('selected-papers'), selected_papers_list)
