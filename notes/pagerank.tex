@@ -1,0 +1,168 @@
+%
+\documentclass{article}
+\usepackage{amsmath,amssymb,bbm,amsthm}
+\usepackage{fullpage}
+\usepackage{thm-restate,color,xcolor,xspace}
+\usepackage{hyperref,cleveref}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{subclaim}{Subclaim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\wW}{\widehat{\mathbf{W}}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\bs}{\mathbf{s}}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\0}{\mathbf{0}}
+
+\begin{document}
+
+
+\title{PageRank Notes}
+\date{\today}
+\maketitle
+
+\section{View 1: Random Walks}
+
+Imagine a walk that goes to a random neighbor with probability $(1-\alpha)$, and returns to node $u$ with probability $\alpha$. The stationary distribution is:
+\begin{gather}
+\bp_u = \alpha \chi_u + (1-\alpha) \bW \bp_u \iff \bp_u = (\I - (1-\alpha)\bW)^{-1} \alpha \chi_u \label1
+\end{gather}
+The inverse exists because $\bW$ has eigenvalues between $-1$ and $1$.
+
+\section{View 2: Spilling Paint}
+
+Imagine we start off with $1$ unit of paint at node $u$. In each step, $\alpha$ fraction of the paint dries, while $(1-\alpha)$ fraction takes a \emph{lazy} random walk: stay with probability $1/2$ and go to a random neighbor with probability $1/2$. Let $\wW$ be the lazy random walk, $\bs^t$ denote the dried paint at time $t$ ($\bs^0=\chi_u$), and $\br^t$ denote the wet paint at time $t$. We have
+\begin{align*}
+\bs^{t+1} &= \bs^t + \alpha \br^t \\
+\br^{t+1} &= (1-\alpha) \wW \br^t
+\end{align*}
+We can solve for $\bs^\infty$:
+\[ \bs^\infty = \sum_{t=0}^\infty \alpha (1-\alpha)^t \wW^t \chi_u = \alpha \, (\I - (1-\alpha)\wW)^{-1} \chi_u \]
+So $s^\infty$ is the same as $p_u$ up to the difference between $\bW$ and $\wW$. 
+\textbf{If we view the paint particles as executing random walks in parallel, then the connection between the two views makes sense.} With this view, we can even ensure $\bW=\wW$ by changing the value of $\alpha$ in View~2 to some $\beta$. Essentially, we set $\beta$ so that a particle of paint has probability $\alpha$ of drying before moving to a neighbor (that is, chose lazy random walk and actually moved instead of staying in place). So from now on, we always use $\bW$ instead of $\wW$.
+
+\section{Local Updates}
+How do we compute $p_u = \bs^\infty$? It turns out that View~2 is more helpful, and allows us to \textbf{compute it completely asynchronously}. In particular, initialize $\bs\gets\0,\, \br\gets\chi_u$ and keep on performing the following three updates simultaneously for different values of $u$:
+\begin{align*}
+\bs(u) &\gets \bs(u) + \alpha \br(u) \\
+\br(u) &\gets \0 \\
+\br(v) &\gets \br(v) + \frac{1-\alpha}{ d(u)} \br(u)
+\end{align*}
+The claim is that we always maintain
+\[ \bp_u = \bs + \alpha \sum_{t=0}^\infty (1-\alpha)^t\bW^t \br \]
+This can be proven with the paint particles simulating parallel random walks analogy.
+
+\section{PageRank Analysis}
+
+For this entire section, fix the starting vertex $u$, and set $\bp:=\bp_{u}$. Define
+\[ \bq(v) := \frac{\bp(v)}{ d(v)} \]
+It makes sense to normalize by $ d(v)$, since higher-degree nodes will naturally have more stationary probability. Let us order the vertices $1,2,\ldots,n$ so that
+\[ \bq(1) \ge \bq(2) \ge \cdots \ge \bq(n) \]
+We will regularly use the set $[k]=\{1,2,\ldots,k\}$, the $k$ vertices with highest $\bq$ values.
+
+\begin{lemma}
+For every $k$,
+\begin{gather} \sum_{i\le k<j} \bq(i)-\bq(j) \le \alpha \label2 \end{gather}
+\end{lemma}
+\begin{proof}
+Intuition: when $\alpha=0$, the stationary distribution of $v$ is proportional to $d(v)$, so all $\bq(v)$ are equal, so expression (\ref2) is $0$. (\ref2) represents the \emph{asymmetric imbalance} of the random walk, which is ``at most'' $\alpha$ because that's the probability of traveling the directed edge back to $u$.
+\begin{align*}
+\chi_{[k]}^T \bW \bp &= (\text{volume initially in $[k]$}) - (\text{change in volume going out of $[k]$}) \\
+&= \chi_{[k]}^T\bp - \sum_{(i,j)\in E,i\in [k],j\notin [k]} (\bq(i) - \bq(j))
+\end{align*}
+Also,
+\begin{gather*}
+\bp \stackrel{(\ref1)}= \alpha\chi_u + (1-\alpha)\bW\bp \le \alpha\chi_u+\bW\bp \iff  
+\bW\bp\ge \bp - \alpha\chi_u \\
+\implies \chi_{[k]}^T\bW\bp \ge \chi_{[k]}^T\bp - \alpha\chi_{[k]}^T\chi_u \ge \chi_{[k]}^T\bp - \alpha 
+\end{gather*}
+Combining the two proves the lemma.
+\end{proof}
+
+\begin{lemma}\label{lem:2}
+If $\phi([j]) \ge 2\theta$ for some $\theta$, then there exists $k>j$ with
+\begin{gather}
+d([k]) \ge (1+\theta)d([j]) \qquad\text{and}\qquad \bq(k)\ge\bq(j) - \frac\alpha{\theta  d([j])} .\label3
+\end{gather}
+\end{lemma}
+\begin{proof}
+Let $k>j$ be the smallest with $d([k])\ge(1+\theta)d([j])$. There are $< \theta d([j])$ many edges between a vertex in $[j]$ and one in $[j+1,k-1]$. Since $\phi([j])\ge2\theta$, there are $\ge 2\theta d([j])$ many edges out of $[j]$. So there are $\ge 2\theta d([j]) - \theta d([j]) = \theta d([j])$ many edges from $[j]$ to $[k,n]$. Since $\bq$ is decreasing,
+\[ \sum_{\substack{(a,b)\in E \\ a\le j,\, b>k}} (\bq(a) - \bq(b)) \ge \sum_{\substack{(a,b)\in E \\ a\le j,\, b>k}} (\bq(j) - \bq(k)) \ge \theta d([j]) (\bq(j)-\bq(k)) \]
+Intuition: $\sum_{i\le k<j} \bq(i)-\bq(j) $ is always bounded by $\alpha$, but we have lots of edges, so the difference of $\alpha$ is spread out over many edges. We also have
+\[ \sum_{\substack{(a,b)\in E \\ a\le j,\, b>k}}(\bq(a)-\bq(b)) \le \sum_{\substack{(a,b)\in E \\ a\le j,\, b>j}}(\bq(a)-\bq(b)) \stackrel{(\ref2)}\le\alpha \]
+Therefore,
+\[  \theta d([j]) (\bq(j)-\bq(k)) \le \alpha \iff \bq(k)\ge\bq(j)-\frac\alpha{\theta d([j])} .\]
+\end{proof}
+
+\begin{lemma}\label{lem:3}
+Suppose $\phi(G)\ge\Omega(\theta)$. Let $h$ be smallest s.t.\ $d([h]) \ge 2m/3$. For every $i\le h$:
+\[ \bq(h) \ge \bq(i)-\frac{2\alpha}{\theta^2 d([i])} .\]
+\end{lemma}
+
+This means that we can start with a large conductance set and blow it up to a set $[h]$ of volume $\Theta(m)$, while making sure $\bq(h) \approx \bq(i)$.
+
+\begin{proof}
+Apply \Cref{lem:2} repeatedly starting from $i$ until we reach $h$. This ensures that $d([i])$ grows geometrically, so that we don't lose too much in the bound $\bq(k)\ge\bq(j) - \frac\alpha{\theta  d([j])}$ from (\ref3). We have
+\begin{align*}
+\bq(h) &\ge \bq(i) - \frac\alpha{\theta d([i])} - \frac\alpha{\theta(1+\theta)d([i])} - \frac\alpha{\theta(1+\theta)^2d([i])} - \cdots \\
+&= \bq(i) - \frac\alpha{\theta d([i])} \cdot \left( 1+\frac1{1+\theta}+\frac1{(1+\theta)^2}+\cdots \right) \\
+&=\bq(i) - \frac\alpha{\theta d([i])} \cdot \frac{1+\theta}\theta \\
+&\ge \bq(i)-\frac{2\alpha}{\theta^2 d([i])} .
+\end{align*}
+Note that this is where we pick up another factor $\theta$, resulting in the square-root in PageRank approximation.
+\end{proof}
+
+Suppose we run PageRank so that there is a \emph{small} set $S$, $d(S)\le O(m/\log m)$, with large probability mass, say, $\bp(S)\ge2/3$. We show that we can find a small conductance cut.
+
+\begin{lemma}\label{lem:4}
+For any set $S$ with $\bp(S)\ge2/3$, let $j$ be smallest with $d([j]) \ge d(S)$. There is an $i\in[j]$ s.t.
+\[ \bq(i) \ge \frac{2/3}{d([i]) H(2m)} .\]
+\end{lemma}
+\begin{proof}
+This is a typical harmonic-series-type bound.
+Suppose not: $\bq(i) = \frac{\bp(i)}{d(i)} < \frac{2/3}{d([i])H(2m)}$ for all $i$. Sum $d(i)$ copies of $\bq(i)$ for each $i$ with $d([i])\le d(S)$:
+\[ \bp(S) \le \bp([j]) = \sum_{i\le j}\bp(i) = \sum_{i\le j} d(i)\bq(i) < \sum_{i\le j}d(i)\frac{2/3}{d([i])H(2m)} \le \sum_{\ell=1}^{2m}\frac{2/3}{\ell\cdot H(2m)}=2/3, \]
+contradicting the assumption that $\bp(S) \ge 2/3$.
+\end{proof}
+
+\begin{lemma}
+Suppose there is $S$ with $d(S)\le O(m/\log m)$ and $\bp(S)\ge2/3$. Then, we can find a low-conductance cut. In particular, there is a set $[j]$, $j\in[n]$, with $\phi([j])\le \sqrt{6\alpha H(2m)}$.
+\end{lemma}
+\begin{proof}
+Suppose not. Define $\theta:=\sqrt{6\alpha H(2m)}$ and suppose that $\phi([j])>\theta$ for all $j\in[n]$. Pick $i$ as in \Cref{lem:4}, so that
+\[ \bq(i) \ge \frac{2/3}{d([i])H(2m)} .\]
+
+
+Define $h$ as in \Cref{lem:3}, and apply \Cref{lem:3} to $i$, so that $d([h])\ge2m/3$ and $\bq(h) \ge \bq(i)-\frac{2\alpha}{\theta^2 d([i])} $. We have
+\[
+\bq(h) \ge \bq(i) - \frac{2\alpha}{\theta^2 d([i])} = \frac{2/3}{d([i])H(2m)} - \frac{2\alpha}{6\alpha H(2m)d([i])} = \frac1{3H(2m) d([i])} .\]
+Since $\bq$ is decreasing,
+\begin{gather*}
+1 \ge \bp([h]) = \sum_{i\in[h]}\bp(i)=\sum_{i\in[h]}d(i)\bq(i) \stackrel{\bq\text{ decr.}}\ge \sum_{i\in[h]}d(i)\bq(h) = d([h])\bq(h) \ge \frac{2m}3 \cdot \frac1{3H(2m) d([i])} \\
+\implies d([i]) \ge \Theta(m/\log m)
+\end{gather*}
+By choice of $i$ in \Cref{lem:4}, we know that $d([i-1]) \le d(S) \le O(m\log m)$. \textcolor{red}{Let's also assume that degrees are not extremely large: $\deg(i) \le o(m/\log m)$.} This means that
+\[ d([i-1]) \approx d([i]) \ge \Theta(m/\log m) ,\]
+contradiction.
+\end{proof}
+
+\textcolor{red}{Q: What about when $d(S) = \Theta(m)$, like in our case? }
+
+
+\end{document}

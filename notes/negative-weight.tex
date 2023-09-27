@@ -1,0 +1,74 @@
+%
+\documentclass{article}
+\usepackage{amsmath,amssymb,bbm,amsthm}
+\usepackage{fullpage}
+\usepackage{thm-restate,color,xcolor,xspace}
+\usepackage{hyperref,cleveref}
+\usepackage{ulem}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{subclaim}{Subclaim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+
+
+\title{negative-weight SSSP notes}
+\date{\today}
+\maketitle
+
+\paragraph{Setting.}
+The goal is to find potentials $\phi(v)$ such that each edge $(u,v)$ has nonnegative modified weight: $w_{\phi}(u,v):=w(u,v)+\phi(u)-\phi(v)\ge0$. This is done iteratively through scaling. Suppose the current weights are at least $-2B$. The goal is to produce weights of at least $-B$. This is done by first adding $+B$ to each edge and then finding a potential whose modified edge weights are all nonnegative. Then, undoing the added $+B$ per edge ensures each edge has weight $\ge-B$. To find the potentials on the graph with $+B$ edge weights, add a dummy source $s$ with an edge $(s,v)$ of weight $0$ to all vertices $v$, and compute SSSP distances from $s$ which become the potentials. \emph{Let $G^{+B}$ be the graph $G$ with $+B$ edge weights and including the dummy source $s$.}
+
+\paragraph{Parameter $\kappa$.}
+One new idea is to consider the \emph{parameter $\kappa$, defined as the maximum number of edges along any $s\to *$ path of weight $\le0$ in $G^{+B}$.} \textbf{I'm trying to relax $\kappa$ as much as possible to understand the algorithm better.} Note that $\kappa$ can only decrease upon taking subgraphs.
+
+\paragraph{Algorithm structure.}
+The algorithm computes potentials on graph $G^{+B}$ recursively. At a high level:
+ \begin{enumerate}
+ \item Partition the vertices (excluding $s$) into:
+  \begin{enumerate}
+  \item Clusters of size $\le$ half,
+  \item A remaining cluster whose induced graph has parameter $\kappa$ halved, and
+  \item Intercluster edges are DAG + few extra edges, so that any path $s\to *$ of weight $\le0$ has $O(\log n)$ non-DAG edges in expectation.
+  \end{enumerate}
+ \item For each cluster $U$, recursively solve $G^{+B}[U\cup\{s\}]$ to obtain potentials whose modified edge weights are all nonnegative.
+ \item Modify the potentials according to the DAG, so that modified DAG edges are all nonnegative.
+ \item To correct non-DAG edges, run Dijkstra + BF hybrid on modified graph and set new potentials to be the distances. The running time depends on the sum (over all $v$) of the number of non-DAG edges on the shortest $s\to v$ path, which is small enough.
+ \end{enumerate}
+
+\paragraph{Decomposition.}
+The decomposition works on graph $G^{+B}_{\ge0}$, the graph $G^{+B}$ with negative weight edges increased to zero. It iteratively looks for in/out-balls of radius $\kappa B/4$ with $\le$ half vertices as long as they exist. For such an in/out-ball, it samples a random radius $\le\kappa B/4$ and carves out a ball of that radius. (More precisely, remove the in/out-boundary of this ball.) Suppose that no more such balls remain, and let $R$ be the remaining vertices.
+
+\begin{claim}
+Any two vertices in $G^{+B}_{\ge0}[R]$ are within $\kappa B/2$ apart in either direction. The same is true for $G^{+B}[R]$ since its edge weights can only be smaller.
+\end{claim}
+\begin{proof}
+For any two vertices $u,v\in R$, the out-ball of $u$ and the in-ball of $v$ (of radii $\kappa B/4$) must intersect, since they each contain more than half the vertices. So there is a path $u\to v$ of weight $\le\kappa B/2$.
+\end{proof}
+
+\begin{claim}
+If $G$ has no negative cycle, then $G^{+B}[R]$ has parameter $\kappa/2$. (We don't even need to assume that $G^{+B}$ has parameter $\kappa$.)
+\end{claim}
+\begin{proof}
+Suppose for contradiction that there exists an $s\to v$ path in $G^{+B}[R\cup s]$ of weight $\le0$ and with $>\kappa/2$ edges. Let $u$ be the first vertex on the path. Since edge $(s,u)$ has weight $0$, we have a $u\to v$ path in $G^{+B}[R]$ of weight $\le0$ and with $>\kappa/2-1$ edges. Extend it by a $v\to u$ path of length $\le\kappa B/2$ to form a cycle in $G^{+B}[R]$ of weight $\le\kappa B/2$ and with $>\kappa/2$ edges. Since all edges have weight $+B$ in $G^{+B}$, this cycle has negative weight in $G$, a contradiction.
+\end{proof}
+
+\begin{claim}
+In $G^{+B}$, any $s\to *$ path of weight $\le0$ has $O(\log n)$ non-DAG edges in expectation.
+\end{claim}
+\begin{proof}
+Since $G^{+B}$ has parameter $\kappa$, any $s\to v$ path of weight $\le0$ has at most $\kappa$ edges. Since edge weights are at least $-2B$ in $G$, they are at least $-B$ in $G^{+B}$, so they are increased by $\le B$ from $G^{+B}$ to $G^{+B}_{\ge0}$. So the path has weight $\le\kappa B$ in $G^{+B}_{\ge0}$. Since the decomposition algorithm removes balls of radii $\sim\kappa B$, standard LDD analysis shows that in expectation, $O(\log n)$ edges of the path are on the boundary of these balls.
+\end{proof}
+
+
+\end{document}

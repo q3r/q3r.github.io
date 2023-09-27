@@ -1,0 +1,81 @@
+%
+\documentclass{article}
+\usepackage{amsmath,amssymb,bbm,amsthm}
+\usepackage{fullpage}
+\usepackage{thm-restate,color,xcolor,xspace}
+\usepackage{hyperref,cleveref}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{subclaim}{Subclaim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+
+
+\title{Planar Bisection Notes}
+\date{\today}
+\maketitle
+
+
+\section{Outline}
+
+The problem is: given planar graph $G$ with face weights, and balance parameter $b\le1/2$, find the minimum cost cycle enclosing at least $bW$ weight on each side, where $W$ is the sum of all face weights.
+
+Suppose OPT is the smallest $b$-balanced cut. We guess a parameter $\lambda\approx OPT/W$. The main goal is to construct a \textbf{low-weight spanner}: want a spanner $H\subseteq G$ of total weight $\textup{poly}(\epsilon^{-1}\log n)\cdot OPT$ such that there exists a $(b-\epsilon)$-balanced cut with weight at most $(1+\epsilon)OPT$ in the spanner.
+
+\section{Step 1: find collection of laminar cycles}
+The first step is to find a collection $\mathcal C$ of cycles with the following two properties:
+ \begin{enumerate}
+ \item The total cost of all cycles is $\textup{poly}(\epsilon^{-1}\log n)\cdot OPT$
+ \item If a cycle $C$ is inside a region $R$, then it contains the (unique) hole $H$ of $R$ with more than half the weight, and moreover, $c(C)/w(C\setminus H) > \epsilon^{-1}\lambda$.
+ \end{enumerate}
+
+The construction roughly goes as follows: greedily pick cycles $C$ in each region $R$ satisfying $c(C)/w(C\cap R)\le\epsilon^{-1}\lambda$. Also, periodically remove heavy nesting of cycles, so that cycle weight drops by half every other cycle in each chain, which means the height of the decomposition is $O(\log W)$.
+
+(1) follows from the fact that there are $O(\log W)$ levels, and each level consists of cycles with disjoint interior which can be charged to their faces, giving total $\le \epsilon^{-1}\lambda\cdot W=\epsilon^{-1} OPT$ cost of cycles per level. 
+
+(2) follows from the fact that if a cycle with $c(C)/w(C\setminus H)\le\epsilon^{-1}\lambda$ existed, then we would have greedily added it to our collection. And if it didn't contain the hole $H$, then it should have been added before whatever holes in $R$ it contains, and then NOT deleted since its weight is necessarily less than half of $R$ (since it's disjoint from $H$).
+
+\section{Step 2: prize-collecting}
+
+Consider a region $R$ (with holes). First, contract each hole into a single vertex $v$ with \textbf{volume} $\phi(v)$ equal to \textbf{$\epsilon^{-1}$ times} the cost of the cycle/hole. (All non-hole vertices $u$ get $\phi(u)=0$.) We then run prize-collecting on the holes, computing a set of edges $Z$ connecting some holes that satisfies:
+ \begin{enumerate}
+ \item The total cost of $Z$ is at most twice the sum of the vertex volumes: $c(Z)\le2\sum\phi(v)$
+ \item For any subgraph $H\subseteq G$, there is a set $U$ of vertices such that
+  \begin{enumerate}
+  \item $\sum_{v\in U}\phi(v)\le c(H)$ (i.e., we can pay to exempt some vertices from condition~(b))
+  \item If vertices $u,v\notin U$ are connected in $H$, then they're connected in $Z$
+  \end{enumerate}
+ \end{enumerate}
+
+We add the computed edges $Z$ to our spanner. Since $c(Z)\le2\sum\phi(v)$ and $\sum\phi(v)$ is simply the sum of holes (which can, again, be charged to the weight inside the holes), we have $c(Z)\le O(\epsilon^{-2}\log W)\,OPT$.
+
+\section{Spanner}
+For each region without a hole, compute a boundary spanner of cost at most $O(\epsilon^{-4})$ times the cycle cost. For each region with holes, for each connected component of $Z$, compute a boundary spanner where the ``boundary'' is an Euler tour of the holes together with the component in $Z$ (where edges of $Z$ are traveled twice, once in each direction). The boundary spanner cost can be charged to existing edges, so the total cost of adding the boundary spanners is at most $O(\epsilon^{-4})$ times the cost so far, or $O(\epsilon^{-4})\cdot  O(\epsilon^{-2}\log W)\,OPT= O(\epsilon^{-6}\log W)\,OPT$.
+
+\section{Transforming OPT}
+Recall that our goal is to transform $OPT$ so that it only uses edges on the spanner. Fix a cycle $O$ in $OPT$. For each region $R$ with a hole that $O$ intersects, set $H:=O\cap R$, and use property~(2) of prize-collection to obtain a set $U$ such that $\sum_{v\in U}\phi(v)\le c(H)$. Now ``cut up'' $O$ along the boundary of each hole in $U$ (if it completely or partially overlaps with $O$, that is). We can charge the extra cutting to the boundaries of the holes in $U$, which gets charged to $O\cap R$ at an $\epsilon:1$ ratio (since $\phi(v)$ was defined with extra factor $\epsilon^{-1}$). Actually, it's $2\epsilon:1$ ratio since we have to cut on both sides of the hole. Since $O\cap R$ is disjoint over all $O$ and $R$, the total extra cutting is at most $2\epsilon\,OPT$.
+
+Define $OPT'$ to be the new transformed $OPT$ ($OPT'\le(1+2\epsilon)OPT$), and fix a cycle $O$ in $OPT'$. We now consider the holes in each region \emph{not} in $U$. First, if a region $R$ has no holes, then replacing the path $O\cap R$ with its path in the boundary spanner changes the weight by at most $(\epsilon/\lambda)\, c(O\cap R)$ (otherwise, we would've added the cycle formed by the two paths into $\mathcal C$). Summing over all $(\epsilon/\lambda)\,c(O\cap R)$ (recall that $\lambda\approx OPT/W)$ we get a weight difference of $O(\epsilon W)$.
+
+Next, if $R$ has holes and $O$ intersects any boundary of $R$ (that is, the outer boundary of $R$ or an inner hole), then replace by the path in boundary spanner of the relevant connected component in $Z$. Through the \emph{cyclic double cover} trick, we can make sure the new and old paths do not enclose the largest hole in $R$. So the new path must also change the weight by at most $(\epsilon/\lambda)\,c(O\cap R)$ (otherwise, we would've added the cycle formed by the two paths into $\mathcal C$). Again, the weight difference is $O(\epsilon W)$.
+
+The last case is when $O$ is completely contained within a region $R$. Then, $O$ must contain the largest hole in $R$ (otherwise, we would've added the cycle formed by the two paths into $\mathcal C$). This is handled with an ad-hoc argument, by replacing $O$ with a ``canonical'' cycle in $R$ containing the largest hole.
+
+In total, we obtain a spanner of total size $O(\epsilon^{-6}\log W)\,OPT$ such that $OPT$ can be modified with extra cost at most $O(\epsilon)OPT$ and weight error $O(\epsilon W)$.
+
+
+
+\end{document}
