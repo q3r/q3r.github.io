@@ -84,74 +84,6 @@ preprints_list = [
   	} ,
 ]
 
-selected_papers_list = [
-  	{
-  		authors : 'Jason Li, Satish Rao, Di Wang' ,
-  		title : 'Congestion-Approximators from the Bottom Up' ,
-		conf : 'SODA 2025' ,
-  		arxiv : '2407.04976' ,
-  	} ,
-  	{
-  		authors : 'Monika Henzinger, Jason Li, Satish Rao, Di Wang' ,
-  		title : 'Deterministic Near-Linear Time Minimum Cut in Weighted Graphs' ,
-		conf : 'SODA 2024' ,
-  		arxiv : '2401.05627' ,
-		links : {'slides@SODA':'./slides/deterministic-near-linear-time.pdf'} ,
-		other: '<font color="forestgreen"><b>Best Paper</b></font>',
-  	} ,
-  	{
-  		authors : 'Amir Abboud, Jason Li, Debmalya Panigrahi, Thatchaphol Saranurak' ,
-  		title : 'All-Pairs Max-Flow is no Harder than Single-Pair Max-Flow: Gomory-Hu Trees in Almost-Linear Time' ,
-		conf : 'FOCS 2023' ,
-  		//arxiv : '' ,
-  	} ,
-  	{
-  		authors : 'Václav Rozhoň, Christoph Grunau, Bernhard Haeupler, Goran Zuzic, Jason Li (r)' ,
-  		title : 'Undirected (1+ɛ)-Shortest Paths via Minor-Aggregates: Near-Optimal Deterministic Parallel & Distributed Algorithms' ,
-  		conf : 'STOC 2022' ,
-  		arxiv : '2204.05874' ,
-  	} ,
-  	{
-  		authors : 'Jason Li, Debmalya Panigrahi' ,
-  		title : 'Approximate Gomory-Hu Tree Is Faster than n-1 Maxflows' ,
-  		conf : 'STOC 2021' ,
-  		arxiv : '2111.02022' ,
-		links : {'slides@STOC':'./slides/approximate-gomory-hu-tree-is-faster-than.pdf'} ,
-  	} ,
-  	{
-  		authors : 'Jason Li, Danupon Nanongkai, Debmalya Panigrahi, Thatchaphol Saranurak, Sorrachai Yingchareonthawornchai' ,
-  		title : 'Vertex Connectivity in Poly-logarithmic Max-flows' ,
-  		conf : 'STOC 2021' ,
-  		arxiv : '2104.00104' ,
-  	} ,
-  	{
-  		authors : 'Vincent Cohen-Addad, Anupam Gupta, Philip N Klein, Jason Li' ,
-  		title : 'A Quasipolynomial (2+ɛ)-Approximation for Planar Sparsest Cut' ,
-  		conf : 'STOC 2021' ,
-  		arxiv : '2105.15187' ,
-  	} ,
-	{
-  		authors : 'Jason Li, Debmalya Panigrahi' ,
-  		title : 'Deterministic Min-cut in Poly-logarithmic Max-flows' ,
-  		conf : 'FOCS 2020' ,
-  		arxiv : '2111.02008' ,
-		links : {'conf-version':'https://q3r.github.io/papers/deterministic-mincut-in-polylogarithmic-conf.pdf', 'slides@CMU(1h)':'./slides/deterministic-mincut-in-polylogarithmic.pdf'} ,
-  	} ,
-	{
-  		authors : 'Julia Chuzhoy, Yu Gao, Jason Li, Danupon Nanongkai, Richard Peng, Thatchaphol Saranurak' ,
-  		title : 'A Deterministic Algorithm for Balanced Cut with Applications to Dynamic Connectivity, Flows, and Beyond' ,
-  		conf : 'FOCS 2020' ,
-  		arxiv : '1910.08025' ,
-  	} ,
-  	{
-  		authors : 'Anupam Gupta, David Harris, Euiwoong Lee, Jason Li' ,
-  		title : 'The Karger-Stein Algorithm is Optimal for k-cut' ,
-  		conf : 'STOC 2020' ,
-  		arxiv : '2005.08301' ,
-		links : {'conf-version':'https://arxiv.org/abs/1911.09165', 'slides1@STOC':'./slides/the-karger-stein-algorithm-1.pptx', 'slides2@STOC':'./slides/the-karger-stein-algorithm-2.pdf'} ,
-  	} ,
-]
-
 
 papers_list = [
   	{
@@ -159,6 +91,7 @@ papers_list = [
   		title : 'Congestion-Approximators from the Bottom Up' ,
 		conf : 'SODA 2025' ,
   		arxiv : '2407.04976' ,
+		selected : true ,
   	} ,
   	{
   		authors : 'Aditya Anand, Euiwoong Lee, Jason Li, Yaowei Long, Thatchaphol Saranurak' ,
@@ -202,7 +135,8 @@ papers_list = [
 		conf : 'SODA 2024' ,
   		arxiv : '2401.05627' ,
 		links : {'slides@SODA':'./slides/deterministic-near-linear-time.pdf'} ,
-		other: '<font color="forestgreen"><b>Best Paper</b></font>',
+		other: '<font color="forestgreen"><b>Best Paper.</b></font> <font color="darkorchid"><b>Invited to HALG.</b></font> <font color="firebrick"><b>Invited to TALG, JACM.</b></font>' ,
+		selected : true ,
   	} ,
   	{
   		authors : 'Ruoxu Cen, William He, Jason Li, Debmalya Panigrahi' ,
@@ -215,6 +149,7 @@ papers_list = [
   		title : 'All-Pairs Max-Flow is no Harder than Single-Pair Max-Flow: Gomory-Hu Trees in Almost-Linear Time' ,
 		conf : 'FOCS 2023' ,
   		//arxiv : '' ,
+		selected : true ,
   	} ,
   	{
   		authors : 'Ruoxu Cen, William He, Jason Li, Debmalya Panigrahi' ,
@@ -241,6 +176,7 @@ papers_list = [
   		title : 'Gomory-Hu Tree in Subcubic Time' ,
 		conf : 'FOCS 2022' ,
   		arxiv : '2111.04958' ,
+		other : '<font color="firebrick"><b>Invited to SICOMP.</b></font>' ,
   	} ,
   	{
   		authors : 'D Ellis Hershkowitz, Jason Li' ,
@@ -252,6 +188,7 @@ papers_list = [
   		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li, Marcin Mucha, Heather Newman, Sherry Sarkar' ,
   		title : 'Matroid-Based TSP Rounding for Half-Integral Solutions' ,
 		conf : 'IPCO 2022' ,
+		journal : 'Mathematical Programming 2024' ,
   		arxiv : '2111.09290' ,
   	} ,
   	{
@@ -259,6 +196,7 @@ papers_list = [
   		title : 'Undirected (1+ɛ)-Shortest Paths via Minor-Aggregates: Near-Optimal Deterministic Parallel & Distributed Algorithms' ,
   		conf : 'STOC 2022' ,
   		arxiv : '2204.05874' ,
+		selected : true ,
   	} ,
   	{
   		authors : 'Zhiyang He, Jason Li' ,
@@ -295,7 +233,7 @@ papers_list = [
   		authors : 'Zhiyang He, Jason Li, Magnus Wahlström' ,
   		title : 'Near-linear-time, Optimal Vertex Cut Sparsifiers in Directed Acyclic Graphs' ,
   		conf : 'ESA 2021' ,
-		other: '<font color="forestgreen"><b>Best Paper</b></font>',
+		other: '<font color="forestgreen"><b>Best Paper.</b></font>',
   		arxiv : '2011.13485' ,
   	} ,
   	{
@@ -304,6 +242,7 @@ papers_list = [
   		conf : 'STOC 2021' ,
   		arxiv : '2111.02022' ,
 		links : {'slides@STOC':'./slides/approximate-gomory-hu-tree-is-faster-than.pdf'} ,
+		selected : true ,
   	} ,
   	{
   		authors : 'Jason Li' ,
@@ -311,13 +250,14 @@ papers_list = [
   		conf : 'STOC 2021' ,
   		arxiv : '2106.05513' ,
 		links : {'slides':'./slides/deterministic-mincut-in-almost-linear.pdf'} ,
-		selected: true ,
+		other : '<font color="darkorchid"><b>Invited to HALG.</b></font>' ,
   	} ,
   	{
   		authors : 'Jason Li, Danupon Nanongkai, Debmalya Panigrahi, Thatchaphol Saranurak, Sorrachai Yingchareonthawornchai' ,
   		title : 'Vertex Connectivity in Poly-logarithmic Max-flows' ,
   		conf : 'STOC 2021' ,
   		arxiv : '2104.00104' ,
+		other : '<font color="firebrick"><b>Invited to SICOMP.</b></font>' ,
 		selected: true ,
   	} ,
   	{
@@ -340,6 +280,7 @@ papers_list = [
   		conf : 'FOCS 2020' ,
   		arxiv : '2111.02008' ,
 		links : {'conf-version':'https://q3r.github.io/papers/deterministic-mincut-in-polylogarithmic-conf.pdf', 'slides@CMU(1h)':'./slides/deterministic-mincut-in-polylogarithmic.pdf'} ,
+		other : '<font color="firebrick"><b>Invited to SICOMP.</b></font>' ,
 		selected: true ,
   	} ,
 	{
@@ -351,10 +292,12 @@ papers_list = [
   	} ,
   	{
   		authors : 'Anupam Gupta, David Harris, Euiwoong Lee, Jason Li' ,
-  		title : 'The Karger-Stein Algorithm is Optimal for k-cut' ,
+  		title : 'Optimal Bounds for the k-cut Problem' ,
   		conf : 'STOC 2020' ,
+		journal : 'JACM 2021' ,
   		arxiv : '2005.08301' ,
 		links : {'conf-version':'https://arxiv.org/abs/1911.09165', 'slides1@STOC':'./slides/the-karger-stein-algorithm-1.pptx', 'slides2@STOC':'./slides/the-karger-stein-algorithm-2.pdf'} ,
+		other : '<font color="firebrick"><b>Invited to SICOMP.</b></font>' ,
 		selected: true ,
   	} ,
   	{
@@ -363,28 +306,22 @@ papers_list = [
   		conf : 'STOC 2020' ,
   		arxiv : '1911.01626' ,
 		links : {'slides@STOC':'./slides/faster-parallel-algorithm.pdf'} ,
-		selected: true ,
   	} ,
 	{
   		authors : 'Jason Li, Jesper Nederlof' ,
   		title : 'Detecting Feedback Vertex Sets of Size k in O*(2.7^k) Time' ,
   		conf : 'SODA 2020' ,
+		journal : 'TALG 2022' ,
   		arxiv : '1906.12298' ,
-		links : {'slides@SODA':'./slides/detecting-feedback-vertex-sets.pdf', 'slides(1h)':'./slides/detecting-feedback-vertex-sets-5-7.pdf'} ,
-		selected: true ,
+		links : {'slides@SODA':'./slides/detecting-feedback-vertex-sets.pdf', 'slides(1h)':'./slides/detecting-feedback-vertex-sets-5-7.pdf'} , 
+		other: '<font color="firebrick"><b>Invited to TALG.</b></font>' ,
   	} ,
-//	{
-//		authors : 'Jason Li' ,
-//		title : 'Distributed Treewidth Computation' ,
-//		conf : 'Submitted' ,
-//		arxiv : '1805.10708' ,
-//	} ,
 	{
 	authors : 'Jason Li' ,
 		title : 'Faster Minimum k-cut of a Simple Graph' ,
 		conf : 'FOCS 2019' ,
 		arxiv : '1910.02665' ,
-		other: '<font color="forestgreen"><b>Machtey Best Student Paper</b></font>',
+		other: '<font color="forestgreen"><b>Machtey Best Student Paper.</b></font> <font color="firebrick"><b>Invited to SICOMP.</b></font>',
 		links : {'slides@FOCS':'./slides/faster-minimum-k-cut-simple.pdf'} ,
 	} ,
 	{
@@ -550,12 +487,17 @@ function paperToDiv(paper) {
 	if (paper['conf']) {
 		confDiv.innerText = paper['conf'] + '. '
 	}
+	var journalDiv = document.createElement('span')
+	if (paper['journal']) {
+		journalDiv.innerText = paper['journal'] + '. '
+	}
 	var arxivDiv = document.createElement('span')
 	if (paper['arxiv']) {
 		arxivDiv.innerHTML = '<a href="https://arxiv.org/abs/' + paper['arxiv'] + '">(arXiv)</a> '
-	//} else {
-	//	arxivDiv.innerText = '(arXiv) '
-	//	arxivDiv.style.visibility = 'hidden'
+	}
+	var otherDiv = document.createElement('div')
+	if ('other' in paper) {
+		otherDiv.innerHTML = paper['other']
 	}
 	var linksDiv = document.createElement('div')
 	if ('links' in paper) {
@@ -566,10 +508,6 @@ function paperToDiv(paper) {
 			linksDiv.innerHTML += '<a href="' + toLink(links[key]) + '">[' + key + ']</a> '
 		}
 	}
-	var otherDiv = document.createElement('div')
-	if ('other' in paper) {
-		otherDiv.innerHTML = paper['other']
-	}
 
 	// Customization
 	titleDiv.style.color = 'purple'
@@ -577,6 +515,9 @@ function paperToDiv(paper) {
 	confDiv.style.color = 'darkblue'
 	confDiv.style.fontWeight = 'bold'
 	confDiv.style.fontStyle = 'italic'
+	journalDiv.style.color = 'darkslategrey'
+	journalDiv.style.fontWeight = 'bold'
+	journalDiv.style.fontStyle = 'italic'
 
 	// arxiv
 
@@ -585,16 +526,17 @@ function paperToDiv(paper) {
 	paperDiv.appendChild(titleDiv)
 	paperDiv.appendChild(authorsDiv)
 	paperDiv.appendChild(confDiv)
+	paperDiv.appendChild(journalDiv)
 	paperDiv.appendChild(arxivDiv)
-	paperDiv.appendChild(linksDiv)
 	paperDiv.appendChild(otherDiv)
+	paperDiv.appendChild(linksDiv)
 
 	return paperDiv
 }
-function addPapersToDiv(papersDiv, papers) {
+function addPapersToDiv(papersDiv, papers, selected) {
 	for (var i = 0; i < papers.length; i++) {
-		//console.log(papers[i])
-		papersDiv.appendChild(paperToDiv(papers[i]))
+		if (!selected || papers[i].selected)
+			papersDiv.appendChild(paperToDiv(papers[i]))
 	}
 }
 
@@ -621,8 +563,8 @@ function showAdviceEmail() {
 
 showSelected() // Only show Selected Publications initially
 <!-- addPapersToDiv(document.getElementById('preprints'), preprints_list) -->
-addPapersToDiv(document.getElementById('all-papers'), papers_list)
-addPapersToDiv(document.getElementById('selected-papers'), selected_papers_list)
+addPapersToDiv(document.getElementById('all-papers'), papers_list, false)
+addPapersToDiv(document.getElementById('selected-papers'), papers_list, true)
 <!-- addPapersToDiv(document.getElementById('old-papers'), old_papers_list) -->
 <!-- addPapersToDiv(document.getElementById('notes'), notes_list) -->
 </script>
