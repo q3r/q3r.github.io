@@ -47,7 +47,7 @@
 	<!-- Two -->
 	<section id="publications">
 		<h3 id='selected-header'> Selected Publications <span id='selected-button' style='color: blue' onclick="showAll()"><u>(show all)</u></span></h3>
-	    <ol reversed class="feature-icons" id='selected-papers'> </ol>
+	    <ul reversed class="feature-icons" id='selected-papers'> </ul>
 		<h3 id='all-header'> All Publications <span id='all-button' style='color: blue' onclick="showSelected()"><u>(show selected)</u></span></h3>
 	    <ol reversed class="feature-icons" id='all-papers'> </ol>
 	    <!-- <h3>Preprints</h3> -->
@@ -80,6 +80,11 @@
 preprints_list = [
   	{
   		authors : 'Jason Li, Thatchaphol Saranurak' ,
+  		title : 'Local Sherman\'s Algorithm for Multi-commodity Flow' ,
+  		arxiv : '2501.10632' ,
+  	} ,
+  	{
+  		authors : 'Jason Li, Thatchaphol Saranurak' ,
   		title : 'Deterministic Weighted Expander Decomposition in Almost-linear Time' ,
   		arxiv : '2106.01567' ,
   	} ,
@@ -88,29 +93,48 @@ preprints_list = [
 
 papers_list = [
   	{
+  		authors : 'Jason Li, Connor Mowry, Satish Rao' ,
+  		title : 'Faster Negative-Weight Shortest Paths and Directed Low-Diameter Decompositions' ,
+		conf : 'SODA 2026' ,
+  		//arxiv : '' ,
+  	} ,
+  	{
+  		authors : 'Antoine El-Hayek, Monika Henzinger, Jason Li' ,
+  		title : 'Deterministic and Exact Fully-dynamic Minimum Cut of Superpolylogarithmic Size in Subpolynomial Time' ,
+		conf : 'SODA 2026' ,
+  		//arxiv : '' ,
+  	} ,
+  	{
   		authors : 'Aaron Bernstein, Joakim Blikstad, Jason Li, Thatchaphol Saranurak, Ta-Wei Tu' ,
   		title : 'Combinatorial Maximum Flow via Weighted Push-Relabel on Shortcut Graphs' ,
 		conf : 'FOCS 2025' ,
 		links : {'slides(1h)':'./slides/combinatorial-max-flow.pdf'} ,
   		//arxiv : '' ,
+		selected : true ,
   	} ,
   	{
   		authors : 'Amir Abboud, Rasmus Kyng, Jason Li, Debmalya Panigrahi, Maximilian Probst Gutenberg, Thatchaphol Saranurak, Wuwei Yuan, Weixuan Yuan' ,
   		title : 'Deterministic Almost-Linear-Time Gomory-Hu Trees' ,
 		conf : 'FOCS 2025' ,
-  		//arxiv : '' ,
+  		arxiv : '2507.20354' ,
   	} ,
   	{
   		authors : 'Ruoxu Cen, Henry Fleischmann, George Z. Li, Jason Li, Debmalya Panigrahi' ,
   		title : 'Fast Algorithms for Graph Arboricity and Related Problems' ,
 		conf : 'FOCS 2025' ,
-  		//arxiv : '' ,
+  		arxiv : '2507.15598' ,
   	} ,
   	{
   		authors : 'Aditya Anand, Euiwoong Lee, Jason Li, Thatchaphol Saranurak' ,
   		title : 'All-Subsets Important Separators with Applications to Sample Sets, Balanced Separators and Vertex Sparsifiers in Directed Graphs' ,
 		conf : 'ICALP 2025' ,
   		arxiv : '2504.20027' ,
+  	} ,
+  	{
+  		authors : 'Ruoxu Cen, Jason Li, Debmalya Panigrahi' ,
+  		title : 'Network Unreliability in Almost-Linear Time' ,
+		conf : 'STOC 2025' ,
+  		arxiv : '2503.23526' ,
   	} ,
   	{
   		authors : 'Jason Li, Owen Li' ,
@@ -124,7 +148,6 @@ papers_list = [
 		conf : 'SODA 2025' ,
   		arxiv : '2407.04976' ,
 		links : {'slides@SODA':'./slides/congestion-approximators.pdf'} ,
-		selected : true ,
   	} ,
   	{
   		authors : 'Aditya Anand, Euiwoong Lee, Jason Li, Yaowei Long, Thatchaphol Saranurak' ,
@@ -137,7 +160,6 @@ papers_list = [
   		title : 'Fully Dynamic Minimum Cut in Subpolynomial Time per Operation' ,
 		conf : 'SODA 2025' ,
   		arxiv : '2412.15069' ,
-		selected : true ,
   	} ,
   	{
   		authors : 'Matthew Ding, Alexandro Garces, Jason Li, Honghao Lin, Jelani Nelson, Vihan Shah, David P. Woodruff' ,
@@ -189,7 +211,6 @@ papers_list = [
   		title : 'All-Pairs Max-Flow is no Harder than Single-Pair Max-Flow: Gomory-Hu Trees in Almost-Linear Time' ,
 		conf : 'FOCS 2023' ,
   		//arxiv : '' ,
-		selected : true ,
   	} ,
   	{
   		authors : 'Ruoxu Cen, William He, Jason Li, Debmalya Panigrahi' ,
@@ -217,6 +238,7 @@ papers_list = [
 		conf : 'FOCS 2022' ,
   		arxiv : '2111.04958' ,
 		other : '<font color="firebrick"><b>Invited to SICOMP.</b></font>' ,
+		selected: true ,
   	} ,
   	{
   		authors : 'D Ellis Hershkowitz, Jason Li' ,
@@ -236,7 +258,6 @@ papers_list = [
   		title : 'Undirected (1+ɛ)-Shortest Paths via Minor-Aggregates: Near-Optimal Deterministic Parallel & Distributed Algorithms' ,
   		conf : 'STOC 2022' ,
   		arxiv : '2204.05874' ,
-		selected : true ,
   	} ,
   	{
   		authors : 'Zhiyang He, Jason Li' ,
@@ -283,7 +304,7 @@ papers_list = [
 		journal : 'SICOMP 2024' ,
   		arxiv : '2111.02022' ,
 		links : {'slides@STOC':'./slides/approximate-gomory-hu-tree-is-faster-than.pdf'} ,
-		selected : true ,
+		selected: true ,
   	} ,
   	{
   		authors : 'Jason Li' ,
@@ -307,7 +328,6 @@ papers_list = [
   		title : 'A Quasipolynomial (2+ɛ)-Approximation for Planar Sparsest Cut' ,
   		conf : 'STOC 2021' ,
   		arxiv : '2105.15187' ,
-		selected: true ,
   	} ,
 	{
   		authors : 'Anupam Gupta, Euiwoong Lee, Jason Li' ,
@@ -331,7 +351,6 @@ papers_list = [
   		title : 'A Deterministic Algorithm for Balanced Cut with Applications to Dynamic Connectivity, Flows, and Beyond' ,
   		conf : 'FOCS 2020' ,
   		arxiv : '1910.08025' ,
-		selected: true ,
   	} ,
   	{
   		authors : 'Anupam Gupta, David Harris, Euiwoong Lee, Jason Li' ,
