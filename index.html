@@ -1,6 +1,5 @@
 
 <html>
-  <img src="me_small.png">
   <head>
     <title>Jason Li</title>
     <meta charset="utf-8" />
@@ -11,8 +10,7 @@
     <!-- Header -->
     <section id="header">
       <header>
-<!--	<span class="image avatar"><img src="images/me_cropped.jpg" alt="" /></span> -->
-	<h1 id="logo"><a href="#">Jason Li</a></h1>
+	  <h1>Jason Li</h1>
       </header>
       <div>
 		  Assistant Professor, Carnegie Mellon University
@@ -23,23 +21,15 @@
       <!-- Main -->
       <div id="main">
             <h3>Teaching</h3>
+			Fall 2025: <a href="https://www.cs.cmu.edu/~15750">15-750 Algorithms in the Real World</a><br>
 			Spring 2025: <a href="https://www.cs.cmu.edu/~15754">15-754 Spectral Graph Theory</a><br>
 			Fall 2024: <a href="https://www.cs.cmu.edu/~15451-f24">15-451 Design and Analysis of Algorithms</a><br>
 			Spring 2024: <a href="https://cs.cmu.edu/~15850">15-850 Advanced Algorithms</a>
 
             <h3>Research Interests</h3>
-			My research applies <b>modern algorithmic techniques</b> to the <b>hardest, longstanding open problems</b> in the field of <b>fast graph algorithms</b>. To illustrate, here are some of my recent discoveries:
-			<ul>
-				<li>the first almost-linear time algorithm for <b><a href="https://arxiv.org/abs/2106.05513">deterministic global minimum cut</a></b> through the <b>expander decomposition</b> technique,</li>
-				<li>the first almost-linear time <b><a href="https://arxiv.org/abs/2111.04958">all-pairs minimum cut</a></b> (Gomory-Hu tree) algorithm through the <b><a href="https://arxiv.org/abs/2111.02008">isolating cuts</a></b> framework and recent advances in <b>dynamic graph algorithms</b>, and</li>
-				<li>the first nearly work- and time-optimal parallel algorithm for <b><a href="https://arxiv.org/abs/1911.01626">approximate shortest path</a></b> through methods in <b>continuous optimization.</b></li>
-			</ul>
-			These modern techniques are all variations of two recurring themes, <b>preconditioning</b> and <b>locality</b>, which I explore in my thesis below. Loosely speaking, I see preconditioning and locality as reductions from <b>worst-case</b> instances to <b>well-behaved</b> and <b>local</b> instances, respectively.
-			<h4><a href='https://q3r.github.io/papers/thesis.pdf'>Thesis: Preconditioning and Locality in Algorithm Design</a> <br>
-			<font color="forestgreen"><b>EATCS Distinguished Dissertation Award (2021)</b></font> <br>
-			<a href="https://q3r.github.io/papers/thesis-slides.pdf">[slides]</a> </h4>
+			Graph algorithms and combinatorial optimization, with a focus on longstanding open questions for basic problems such as shortest path, maximum flow, and minimum cut
 
-            <h3>My Amazing Students</h3>
+            <h3>Current Students</h3>
 			<a href="https://hfleischmann3.github.io">Henry Fleischmann</a> &#8198;
 			<a href="https://sites.google.com/view/gzli929">George Li</a>
 
@@ -93,23 +83,41 @@ preprints_list = [
 
 papers_list = [
   	{
+  		authors : 'George Z. Li, Jason Li, Satish Rao, Junkai Zhang' ,
+  		title : 'Shortcutting for Negative-Weight Shortest Paths' ,
+		conf : 'STOC 2026' ,
+  		arxiv : '2511.12714' ,
+  	} ,
+  	{
+  		authors : 'Jason Li' ,
+  		title : 'Deterministic Padded Decompositions and Negative-Weight Shortest Paths' ,
+		conf : 'STOC 2026' ,
+  		arxiv : '2511.07859' ,
+  	} ,
+  	{
+  		authors : 'Édouard Bonnet, Tuukka Korhonen, Hung Le, Jason Li, Tomáš Masařík' ,
+  		title : 'Separator Theorem for Minor-Free Graphs in Linear Time' ,
+		conf : 'STOC 2026' ,
+  		arxiv : '2512.01587' ,
+  	} ,
+  	{
   		authors : 'Jason Li, Connor Mowry, Satish Rao' ,
   		title : 'Faster Negative-Weight Shortest Paths and Directed Low-Diameter Decompositions' ,
 		conf : 'SODA 2026' ,
-  		//arxiv : '' ,
+  		arxiv : '2510.22721' ,
   	} ,
   	{
   		authors : 'Antoine El-Hayek, Monika Henzinger, Jason Li' ,
   		title : 'Deterministic and Exact Fully-dynamic Minimum Cut of Superpolylogarithmic Size in Subpolynomial Time' ,
 		conf : 'SODA 2026' ,
-  		//arxiv : '' ,
+  		arxiv : '2512.13105' ,
   	} ,
   	{
   		authors : 'Aaron Bernstein, Joakim Blikstad, Jason Li, Thatchaphol Saranurak, Ta-Wei Tu' ,
   		title : 'Combinatorial Maximum Flow via Weighted Push-Relabel on Shortcut Graphs' ,
 		conf : 'FOCS 2025' ,
 		links : {'slides(1h)':'./slides/combinatorial-max-flow.pdf'} ,
-  		//arxiv : '' ,
+  		arxiv : '2510.17182' ,
 		selected : true ,
   	} ,
   	{
